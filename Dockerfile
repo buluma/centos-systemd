@@ -1,4 +1,4 @@
-FROM buluma/centos:systemd
+FROM centos/systemd
 
 MAINTAINER "Michael Buluma" <ops@buluma.me.ke>
 
