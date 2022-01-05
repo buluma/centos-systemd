@@ -1,4 +1,5 @@
-name: Docker
+---
+name: Build and Push Container
 
 on:
   schedule:
