@@ -2,15 +2,21 @@
 name: Build and Push Container
 
 on:
-  schedule:
-    - cron: '12 * * * *'
   push:
-    branches: [ main ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        required: false
+        default: 'false'
+  schedule:
+    - cron: '0 7 * * *'
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 env:
   # Use docker.io for Docker Hub if empty
